@@ -36,3 +36,8 @@ Teamsy is a single database multi tenant application shell built for the Laracas
 
 -   _There was a chage to the phpunit.xml file. We changed the DB_CONNECTION and DB_DATABASE_
 -   _Tere are some tests to make sure we are accomplishing these considerations_
+
+# S3 storage
+
+For this project, I created 2 S3 buckets on AWS. I also created a user that have acess to those buckets.
+We need to add the info into the .env file and make a change to the filesystems.php file.

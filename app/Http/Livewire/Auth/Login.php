@@ -9,10 +9,10 @@ use Livewire\Component;
 class Login extends Component
 {
     /** @var string */
-    public $email = '';
+    public $email = 'admin@admin.com';
 
     /** @var string */
-    public $password = '';
+    public $password = 'password';
 
     /** @var bool */
     public $remember = false;
@@ -24,19 +24,22 @@ class Login extends Component
 
     public function authenticate()
     {
-        $this->validate();
+        $credentials = $this->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
 
-        if (!Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
+        if (!Auth::attempt($credentials, $this->remember)) {
             $this->addError('email', trans('auth.failed'));
 
             return;
         }
 
-        return redirect()->intended(route('home'));
+        redirect(route('home'));
     }
 
     public function render()
     {
-        return view('livewire.auth.login')->extends('layouts.auth');
+        return view('livewire.auth.login');
     }
 }

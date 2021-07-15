@@ -1,7 +1,8 @@
 <?php
 
-namespace Database\Seeders;
-
+use App\Models\Login;
+use App\Models\Tenant;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +14,23 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        Tenant::factory()->count(3)->create();
+
+        foreach(Tenant::all() as $tenant) {
+            User::factory()->count(20)->create([
+                'tenant_id' => $tenant->id,
+            ]);
+        }
+
+        foreach(User::all() as $user) {
+            Login::factory()->count(5)->create([
+                'user_id' => $user->id,
+                'tenant_id' => $user->tenant_id,
+            ]);
+        }
+        User::factory()->count(1)->create([
+            'tenant_id' => null,
+            'email' => 'admin@admin.com',
+       ]);
     }
 }
