@@ -1,9 +1,9 @@
 <div>
     <div class="grid grid-cols-6 mb-4">
         <div class="col-span-6 pr-2 sm:col-span-1">
-            <label for="location" class="block text-sm font-medium leading-5 text-gray-700">Per Page</label>
+            <label for="location" class="block text-sm font-medium leading-5 text-gray-700 ">Per Page</label>
             <select wire:model="perPage" id="location"
-                class="block w-full py-2 pl-3 pr-10 mt-1 text-base leading-6 border-gray-300 form-select focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5">
+                class="block w-full py-2 pl-3 pr-10 mt-1 text-base leading-6 border-gray-300 rounded-md form-select focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5">
                 <option>10</option>
                 <option>15</option>
                 <option>20</option>
@@ -14,7 +14,7 @@
             <div class="col-span-6 pr-2 sm:col-span-2">
                 <label for="tenant" class="block text-sm font-medium leading-5 text-gray-700">Tenant</label>
                 <select wire:model="selectedTenant" id="tenant"
-                    class="block w-full py-2 pl-3 pr-10 mt-1 text-base leading-6 border-gray-300 form-select focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5">
+                    class="block w-full py-2 pl-3 pr-10 mt-1 text-base leading-6 border-gray-300 rounded-md form-select focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5">
                     <option value="">Choose a Tenant</option>
                     @foreach ($tenants as $key => $tenant)
                         <option value="{{ $key }}">{{ $tenant }}</option>
@@ -125,7 +125,7 @@
             </div>
         </div>
     </div>
-    <div>
+    <div class="mt-8">
         {{ $users->links() }}
     </div>
 </div>

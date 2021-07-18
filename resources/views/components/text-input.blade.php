@@ -4,7 +4,7 @@
     'placeholder' => '',
 ])
 
-<div class="{{ $attributes->get('class') }}">
+<div class=" {{ $attributes->get('class') }}">
     <label for="{{ $attributes->whereStartsWith('wire:model')->first() }}"
         class="block text-sm font-medium leading-5 text-gray-700">{{ $label }}
     </label>
@@ -14,7 +14,7 @@
             @error($attributes->whereStartsWith('wire:model')->first())
             class="block w-full pr-10 text-red-900 placeholder-red-300 border-red-300 form-input focus:border-red-300 focus:shadow-outline-red sm:text-sm sm:leading-5"
         @else
-            class="block w-full form-input sm:text-sm sm:leading-5"
+            class="block w-full border border-gray-200 rounded-md form-input sm:text-sm sm:leading-5"
             @endif
             placeholder="{{ $placeholder }}"
             @error($attributes->whereStartsWith('wire:model')->first())

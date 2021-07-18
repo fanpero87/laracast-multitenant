@@ -2,8 +2,13 @@
 
 namespace App\Providers;
 
+use App\Http\Livewire\Auth\Login;
+use App\Listeners\ClearTenantIdFromSession;
+use App\Listeners\RecordLogin;
+use App\Listeners\SetTenantIdInSession;
+use Illuminate\Auth\Events\Logout;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
+use Illuminate\Auth\Listeners\SendEmailVerificationNotification;;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
 
@@ -18,6 +23,13 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        \Illuminate\Auth\Events\Login::class => [
+            SetTenantIdInSession::class,
+            RecordLogin::class,
+        ],
+        Logout::class => [
+            ClearTenantIdFromSession::class,
+        ]
     ];
 
     /**

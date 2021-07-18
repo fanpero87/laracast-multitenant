@@ -9,4 +9,6 @@ use Illuminate\Database\Eloquent\Model;
 class Department extends Model
 {
     use BelongsToTenant;
+
+    protected $guarded = [];
 }
